@@ -1,3 +1,7 @@
+const OFF = 0;
+const WARN = 1;
+const ERROR = 2;
+
 module.exports = {
   env: {
     browser: true,
@@ -24,5 +28,17 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'unicorn', 'promise', '@typescript-eslint'],
-  rules: {},
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.tsx', '.ts', '.js', '.json'],
+      },
+      typescript: {},
+    },
+  },
+  rules: {
+    'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+    '@typescript-eslint/no-var-requires': OFF,
+    'global-require': OFF,
+  },
 };
