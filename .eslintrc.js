@@ -37,8 +37,28 @@ module.exports = {
     },
   },
   rules: {
+    'react/jsx-filename-extension': [WARN, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
     '@typescript-eslint/no-var-requires': OFF,
     'global-require': OFF,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        ts: 'never',
+        tsx: 'never',
+        json: 'never',
+        js: 'never',
+      },
+    ],
+    'unicorn/filename-case': [
+      'error',
+      {
+        cases: {
+          camelCase: true,
+          pascalCase: true,
+        },
+      },
+    ],
   },
 };

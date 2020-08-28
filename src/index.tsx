@@ -1,7 +1,5 @@
-const fn = (a: string, b: number): void => {
-  console.log(a, b);
-};
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app';
 
-const fnB = (a: number, b: number): void => {
-  console.log(a, b);
-};
+ReactDOM.render(<App name="tom" age={13} />, document.querySelector('#root'));

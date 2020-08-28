@@ -6,14 +6,26 @@ const { isDev, PROJECT_PATH } = require('../constant');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../../src/app.js'),
+    app: path.resolve(__dirname, '../../src/index.tsx'),
   },
   output: {
     filename: 'js/[name].[hash:8].js',
     path: path.resolve(__dirname, '../../dist'),
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: {
+      '@pages': path.resolve(PROJECT_PATH, './src/pages'),
+    },
+  },
   module: {
     rules: [
+      {
+        test: /\.(tsx$|js$)/,
+        loader: 'babel-loader',
+        options: { cacheDirectory: true },
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: [
